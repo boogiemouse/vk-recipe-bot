@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Модель для хранения истории запросов
+model RequestHistory {
+  id        Int      @id @default(autoincrement())
+  userId    Int      // ID пользователя ВК (чтобы не смешивать данные)
+  command   String   // Какая команда была вызвана
+  query     String?  // Что именно искал пользователь
+  createdAt DateTime @default(now()) // Время запроса
+}

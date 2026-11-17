@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "RequestHistory" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "userId" INTEGER NOT NULL,
+    "command" TEXT NOT NULL,
+    "query" TEXT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
