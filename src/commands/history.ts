@@ -1,11 +1,8 @@
 import { MessageContext } from 'vk-io';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '../database/prisma';
 
 export async function handleHistoryCommand(context: MessageContext) {
     try {
-        // Ищем последние 5 запросов конкретного пользователя
         const history = await prisma.requestHistory.findMany({
             where: { userId: context.senderId },
             orderBy: { createdAt: 'desc' },
